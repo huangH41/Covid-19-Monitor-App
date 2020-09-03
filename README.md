@@ -10,4 +10,4 @@ This project objective is to create "***Siaga Covid-19***" Mobile Application us
 5. Herman
 ***
 
-Application Design by **Gojek Academy** Team
+Application Design by **GO-Academy** Team
