@@ -51,6 +51,9 @@
         android:layout_marginHorizontal="20sp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/Light_Grey"
+        android:labelFor="@+id/search"
+        android:accessibilityPaneTitle="@string/app_name"
+        android:clickable="true"
 
         app:layout_constraintBottom_toBottomOf="@+id/line"
         app:layout_constraintStart_toStartOf="parent"
