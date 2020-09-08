@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.covid_19monitorapp.Adapter.LookUpAdapter
 import kotlinx.android.synthetic.main.activity_lookup.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.lookUpArrIcon
@@ -12,6 +14,13 @@ import kotlinx.android.synthetic.main.activity_main.lookUpArrIcon
 class LookupActivity: AppCompatActivity() {
     companion object{
         const val Extra="Extras"
+        private val mockLookUpList = mutableListOf(
+            LookUpData("DKI Jakarta",800,500,300),
+            LookUpData("Sumatera Utara",120,80,30),
+            LookUpData("Sumatera Selatan",50,60,85),
+            LookUpData("Sumatera Barat",959,26,5),
+        )
+        val lookUpAdapter = LookUpAdapter(mockLookUpList)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +31,13 @@ class LookupActivity: AppCompatActivity() {
         search.setQuery(value,false)
 
         backButton.setOnClickListener{
-            startActivity(Intent(this,MainActivity::class.java))
+            onBackPressed()
         }
+
+        rvLookUp.layoutManager =LinearLayoutManager(this)
+        rvLookUp.adapter = lookUpAdapter
     }
+
     override fun onStart() {
         super.onStart()
         Log.e("Activity","Activity:onStart")
