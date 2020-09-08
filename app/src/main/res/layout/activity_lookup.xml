@@ -76,7 +76,7 @@
             android:id="@+id/jatim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="20dp"
+            android:elevation="10dp"
             android:background="@drawable/shadow"
             android:backgroundTint="@color/White"
             android:padding="20sp"
