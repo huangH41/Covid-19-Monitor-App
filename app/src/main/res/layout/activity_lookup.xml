@@ -51,193 +51,26 @@
         android:layout_marginHorizontal="20sp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/Light_Grey"
-        android:labelFor="@+id/search"
-        android:accessibilityPaneTitle="@string/app_name"
-        android:clickable="true"
+        android:searchIcon="@drawable/ic_baseline_search_24"
+        android:closeIcon="@drawable/ic_baseline_close_24"
+        android:queryHint="Search city"
+        android:inputType="text"
+        android:contextClickable="true"
 
         app:layout_constraintBottom_toBottomOf="@+id/line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/line"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/data"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLookUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        app:layout_constraintTop_toBottomOf="@+id/search">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/jatim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_rectangle"
-            android:backgroundTint="@color/Light_Grey"
-            android:padding="20sp"
-            android:layout_margin="10sp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/dataheader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jawa Timur"
-                android:textColor="@color/Indigo"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/dataTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Teal"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toStartOf="@+id/dataPositif"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader" />
-
-            <TextView
-                android:id="@+id/dataPositif"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Green"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader" />
-
-            <TextView
-                android:id="@+id/dataDead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Red"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dataPositif"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/jabar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_rectangle"
-            android:backgroundTint="@color/Light_Grey"
-            android:padding="20sp"
-            android:layout_margin="10sp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jatim">
-
-            <TextView
-                android:id="@+id/dataheader1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jawa Barat"
-                android:textColor="@color/Indigo"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/dataTotal1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Teal"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toStartOf="@+id/dataPositif1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader1" />
-
-            <TextView
-                android:id="@+id/dataPositif1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Green"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader1" />
-
-            <TextView
-                android:id="@+id/dataDead1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20sp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/Red"
-                android:padding="12sp"
-                android:text="08258"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dataPositif1"
-                app:layout_constraintTop_toBottomOf="@+id/dataheader1" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_lookup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
