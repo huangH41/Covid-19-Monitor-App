@@ -19,6 +19,11 @@ class LookupActivity: AppCompatActivity() {
             LookUpData("Sumatera Utara",120,80,30),
             LookUpData("Sumatera Selatan",50,60,85),
             LookUpData("Sumatera Barat",959,26,5),
+
+            LookUpData("DKI Jakarta",800,500,300),
+            LookUpData("Sumatera Utara",120,80,30),
+            LookUpData("Sumatera Selatan",50,60,85),
+            LookUpData("Sumatera Barat",959,26,5),
         )
         val lookUpAdapter = LookUpAdapter(mockLookUpList)
     }
