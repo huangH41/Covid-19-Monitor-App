@@ -1,5 +1,6 @@
 package com.example.covid_19monitorapp
 
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             lookUpActivity()
         }
         hotlineArrIcon.setOnClickListener(){
-            lookUp()
+            hotlineDialog()
         }
     }
 
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun hotlineDialog(){
+        val dialog = Dialog(this)
 
     }
 }

@@ -3,14 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/white_top_rounded_corner_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/white_top_rounded_corner_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
             android:id="@+id/hotlineClose"
@@ -52,8 +47,5 @@
             app:layout_constraintTop_toBottomOf="@+id/subHeaderHotline"
             tools:itemCount="2"
             tools:listitem="@layout/item_hotline" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
