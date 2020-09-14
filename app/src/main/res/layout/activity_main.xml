@@ -305,7 +305,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Look Up"
+                android:text="Hotline"
                 android:textColor="@color/Indigo_2"
                 app:layout_constraintStart_toEndOf="@+id/hotlineImage"
                 app:layout_constraintTop_toTopOf="@+id/hotlineImage" />

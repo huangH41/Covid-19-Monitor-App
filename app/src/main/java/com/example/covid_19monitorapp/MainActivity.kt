@@ -8,8 +8,10 @@ import android.os.PersistableBundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_lookup.*
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
+
     companion object{
         const val Extra="Extras"
     }
@@ -74,5 +76,8 @@ class MainActivity : AppCompatActivity() {
             data = Uri.parse("city:$dataInput")
         }
         startActivity(intent)
+    }
+    private fun hotlineDialog(){
+
     }
 }
