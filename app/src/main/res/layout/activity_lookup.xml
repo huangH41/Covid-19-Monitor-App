@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/Off_White"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -12,7 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
-        android:backgroundTint="@color/White"
+        android:backgroundTint="@color/transparent"
         android:padding="0dp"
         android:scaleType="fitCenter"
 
@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
         app:srcCompat="@drawable/arrow_back" />
+
     <TextView
         android:id="@+id/textView"
         style="@style/Header4"
@@ -37,39 +38,41 @@
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/Light_Grey"
         android:layout_marginTop="60sp"
+        android:background="@color/Light_Grey"
 
         app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView"/>
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <SearchView
-        android:id="@+id/search"
+        android:id="@+id/svProvinceSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100sp"
-        android:layout_marginHorizontal="20sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/Light_Grey"
-        android:searchIcon="@drawable/ic_baseline_search_24"
         android:closeIcon="@drawable/ic_baseline_close_24"
-        android:queryHint="Search city"
-        android:inputType="text"
         android:contextClickable="true"
 
-        app:layout_constraintBottom_toBottomOf="@+id/line"
+        android:inputType="text"
+        android:queryHint="Search city"
+        android:searchIcon="@drawable/ic_baseline_search_24"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/line"/>
+        app:layout_constraintTop_toTopOf="@+id/line" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLookUp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/svProvinceSearch"
+        app:layout_constraintVertical_bias="1.0"
         tools:itemCount="5"
         tools:listitem="@layout/item_lookup" />
 
