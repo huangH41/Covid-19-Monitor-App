@@ -32,10 +32,12 @@
 
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toEndOf="@+id/ivIconHotline"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="021-5210-999" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/hotlineHeader"
+            tools:layout_editor_absoluteY="-1dp"
+            tools:text="021-5210-999"
+
+            android:textAlignment="textStart"/>
 
         <TextView
             android:id="@+id/hotlineHeader"
@@ -46,10 +48,10 @@
             android:textStyle="bold"
 
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
             app:layout_constraintStart_toEndOf="@+id/ivIconHotline"
             app:layout_constraintTop_toBottomOf="@+id/hotlineNumber"
-            app:layout_constraintHorizontal_bias="0.15"
-            tools:text="Kementrian Kesehatna" />
+            tools:text="Kementrian Kesehatan" />
 
         <ImageView
             android:id="@+id/phoneNumber"

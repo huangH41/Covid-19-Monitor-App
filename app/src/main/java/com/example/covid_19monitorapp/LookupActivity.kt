@@ -21,7 +21,7 @@ class LookupActivity: AppCompatActivity() {
 
     companion object{
         const val Extra="Extras"
-        private val okHttpClient = OkHttpClient()
+        val okHttpClient = OkHttpClient()
 
         private val mockLookUpList = mutableListOf(
             LookUpData("DKI Jakarta",800,500,300),
