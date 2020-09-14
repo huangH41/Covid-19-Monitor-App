@@ -3,9 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/white_top_rounded_corner_bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:id="@+id/hotlineBottomSheet"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/white_top_rounded_corner_bg">
 
         <ImageButton
             android:id="@+id/hotlineClose"
@@ -27,7 +35,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineClose"
-            tools:text="Hotline" />
+            android:text="Hotline" />
 
         <TextView
             android:id="@+id/subHeaderHotline"
@@ -38,7 +46,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineHeader"
-            tools:text="Layanan darurat via telephone yang disediakan olehKemnkes dan juga pemprov DKI" />
+            android:text="Layanan darurat via telephone yang disediakan olehKemnkes dan juga pemprov DKI" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHotline"
@@ -47,5 +55,8 @@
             app:layout_constraintTop_toBottomOf="@+id/subHeaderHotline"
             tools:itemCount="2"
             tools:listitem="@layout/item_hotline" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

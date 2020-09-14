@@ -340,4 +340,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include layout="@layout/dialog_hotline" android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

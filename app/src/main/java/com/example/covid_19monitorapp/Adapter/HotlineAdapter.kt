@@ -8,7 +8,7 @@ import com.example.covid_19monitorapp.R
 
 class HotlineAdapter(private val hotlineList: MutableList<HotlineData>) : RecyclerView.Adapter<HotlineViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotlineViewHolder {
-        return  HotlineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_hotline, parent,false))
+        return HotlineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_hotline, parent,false))
     }
 
     override fun onBindViewHolder(holder: HotlineViewHolder, position: Int) {

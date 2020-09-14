@@ -1,14 +1,16 @@
 package com.example.covid_19monitorapp
 
-import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.View
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.activity_lookup.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_hotline.*
 import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
@@ -21,11 +23,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.e("Activity","Activity:onCreate")
+
+        val hotlineFragment = HotlineFragment()
+
+        hotlineBottomSheet.visibility = View.GONE
+
         lookUpArrIcon.setOnClickListener(){
             lookUpActivity()
         }
         hotlineArrIcon.setOnClickListener(){
-            hotlineDialog()
+            hotlineFragment.show(supportFragmentManager, "HotlineDialog")
         }
     }
 
@@ -78,8 +85,5 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
-    private fun hotlineDialog(){
-        val dialog = Dialog(this)
 
-    }
 }
