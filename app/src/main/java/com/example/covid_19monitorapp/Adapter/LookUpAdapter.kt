@@ -18,4 +18,16 @@ class LookUpAdapter(private val lookUpList: MutableList<LookUpData>) : RecyclerV
     override fun getItemCount(): Int {
         return lookUpList.size
     }
+
+    fun filterAndUpdateData(keyword: String) {
+         val newList = lookUpList.filter { it.provincename.contains(keyword as CharSequence, true) }
+        updateData(newList)
+    }
+
+    fun updateData(newList: List<LookUpData>) {
+        lookUpList.clear()
+        lookUpList.addAll(newList)
+
+        notifyDataSetChanged()
+    }
 }
