@@ -1,21 +1,12 @@
 package com.example.covid_19monitorapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.covid_19monitorapp.Adapter.HotlineAdapter
 import com.example.covid_19monitorapp.Adapter.LookUpAdapter
+import com.example.covid_19monitorapp.Data.LookUpData
 import kotlinx.android.synthetic.main.activity_lookup.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.lookUpArrIcon
-import okhttp3.*
-import org.json.JSONArray
-import java.io.IOException
-import java.lang.Exception
 
 class LookupActivity: AppCompatActivity() {
 

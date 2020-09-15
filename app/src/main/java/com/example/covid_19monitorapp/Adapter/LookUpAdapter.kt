@@ -3,7 +3,7 @@ package com.example.covid_19monitorapp.Adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19monitorapp.LookUpData
+import com.example.covid_19monitorapp.Data.LookUpData
 import com.example.covid_19monitorapp.R
 
 class LookUpAdapter(private val lookUpList: MutableList<LookUpData>) : RecyclerView.Adapter<LookUpViewHolder>() {

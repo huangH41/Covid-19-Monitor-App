@@ -1,15 +1,19 @@
 package com.example.covid_19monitorapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covid_19monitorapp.Adapter.HotlineAdapter
+import com.example.covid_19monitorapp.Data.HotlineData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_hotline.*
+import kotlinx.android.synthetic.main.item_hotline.*
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
@@ -77,7 +81,6 @@ class HotlineFragment: BottomSheetDialogFragment(){
                                 name = jsonArray.getJSONObject(i).getString("name"),
                                 phone = jsonArray.getJSONObject(i).getString("phone"))
                         )
-
                     }
                     activity?.runOnUiThread {
                         hotlineAdapter.updateData(hotlineListFromNetwork)
@@ -90,6 +93,17 @@ class HotlineFragment: BottomSheetDialogFragment(){
             }
 
         }
+
+    }
+     fun phoneCall(phone:String){
+         Log.e("phone","$phone")
+        val phoneNumber = phone.split("-").toTypedArray()
+         Log.e("phone","$phoneNumber")
+        val intent = Intent().apply{
+            action = Intent.ACTION_DIAL
+            data = Uri.parse("tel:$phoneNumber" )
+        }
+        startActivity(intent)
 
     }
 }

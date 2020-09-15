@@ -27,17 +27,17 @@
             android:id="@+id/hotlineNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="textStart"
             android:textColor="@color/Indigo"
-            android:textSize="24sp"
 
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/hotlineHeader"
-            tools:layout_editor_absoluteY="-1dp"
-            tools:text="021-5210-999"
 
-            android:textAlignment="textStart"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="021-5210-999" />
 
         <TextView
             android:id="@+id/hotlineHeader"

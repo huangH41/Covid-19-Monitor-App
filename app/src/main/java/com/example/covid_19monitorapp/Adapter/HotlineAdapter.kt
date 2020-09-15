@@ -3,7 +3,7 @@ package com.example.covid_19monitorapp.Adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19monitorapp.HotlineData
+import com.example.covid_19monitorapp.Data.HotlineData
 import com.example.covid_19monitorapp.R
 
 class HotlineAdapter(private val hotlineList: MutableList<HotlineData>) : RecyclerView.Adapter<HotlineViewHolder>() {
