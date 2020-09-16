@@ -1,15 +1,19 @@
 package com.example.covid_19monitorapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covid_19monitorapp.Adapter.HotlineAdapter
+import com.example.covid_19monitorapp.Data.HotlineData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_hotline.*
+import kotlinx.android.synthetic.main.item_hotline.*
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
@@ -18,7 +22,6 @@ import java.lang.Exception
 class HotlineFragment: BottomSheetDialogFragment(){
 
     companion object{
-        const val Extra="Extras"
         val okHttpClient = OkHttpClient()
 
         private val mockHotlineList = mutableListOf(
@@ -40,7 +43,9 @@ class HotlineFragment: BottomSheetDialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val hotlineAdapter = HotlineAdapter(mockHotlineList)
+        hotlineClose.setOnClickListener(){
+            dismiss()
+        }
 
         rvHotline.layoutManager = LinearLayoutManager(activity)
         rvHotline.adapter = hotlineAdapter
@@ -75,7 +80,6 @@ class HotlineFragment: BottomSheetDialogFragment(){
                                 name = jsonArray.getJSONObject(i).getString("name"),
                                 phone = jsonArray.getJSONObject(i).getString("phone"))
                         )
-
                     }
                     activity?.runOnUiThread {
                         hotlineAdapter.updateData(hotlineListFromNetwork)

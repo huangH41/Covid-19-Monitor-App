@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covid_19monitorapp.Adapter.LookUpAdapter
+import com.example.covid_19monitorapp.Data.LookUpData
 import kotlinx.android.synthetic.main.activity_lookup.*
 import okhttp3.*
 import org.json.JSONArray
@@ -22,7 +23,7 @@ class LookupActivity: AppCompatActivity() {
     }
 
     private val listOfLookUpData = mutableListOf<LookUpData>(
-        LookUpData("Dummy Data", 100, 100, 100)
+        LookUpData("Loading...", 100, 100, 100)
     )
     private val lookUpAdapter = LookUpAdapter(listOfLookUpData)
 

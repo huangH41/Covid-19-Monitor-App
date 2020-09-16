@@ -1,22 +1,23 @@
 package com.example.covid_19monitorapp
 
+import android.content.Context
 import android.content.Intent
+import android.icu.text.IDNA
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.activity_lookup.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_hotline.*
-import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
 
     companion object{
         const val Extra="Extras"
+        val hotlineFragment = HotlineFragment()
+        val infoFragment = InfoFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,16 +25,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.e("Activity","Activity:onCreate")
 
-        val hotlineFragment = HotlineFragment()
-
         hotlineBottomSheet.visibility = View.GONE
 
         lookUpArrIcon.setOnClickListener(){
             lookUpActivity()
         }
+        ibInfo.setOnClickListener(){
+            infoFragment.show(supportFragmentManager,"infoDialog")
+        }
         hotlineArrIcon.setOnClickListener(){
             hotlineFragment.show(supportFragmentManager, "HotlineDialog")
         }
+
+
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -77,15 +81,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 //    Implicit Intent
-    private fun lookUp(){
-        val dataInput ="Lampung"
-        val intent = Intent(this, LookupActivity::class.java).apply{
-            action = Intent.ACTION_SEND
-            data = Uri.parse("city:$dataInput")
+        fun phoneCall(context: Context, request: String){
+            Log.e("phone","$request")
+            val phoneNumber = request.replace("-","")
+            Log.e("phone","$phoneNumber")
+            val intent = Intent().apply{
+                action = Intent.ACTION_DIAL
+                data = Uri.parse("tel:$phoneNumber" )
+            }
+                context.startActivity(intent)
         }
-        startActivity(intent)
-    }
-    private fun hotlineDialog(){
-
-    }
 }
