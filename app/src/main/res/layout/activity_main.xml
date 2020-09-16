@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
-        style="@style/Header4"
+        android:id="@+id/tvCountry"
+        style="@style/Header1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -29,9 +29,9 @@
         android:padding="0dp"
         android:scaleType="fitCenter"
 
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCountry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/tvCountry"
         app:srcCompat="@drawable/information" />
 
     <ImageView
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toStartOf="@+id/totalCase"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountry"
         android:src="@drawable/virus"/>
 
     <TextView

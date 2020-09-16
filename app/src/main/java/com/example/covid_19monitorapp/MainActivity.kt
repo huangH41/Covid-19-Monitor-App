@@ -2,15 +2,26 @@ package com.example.covid_19monitorapp
 
 import android.content.Context
 import android.content.Intent
-import android.icu.text.IDNA
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import com.example.covid_19monitorapp.Adapter.TotalCaseAdapter
+import com.example.covid_19monitorapp.Data.TotalData
+import com.example.covid_19monitorapp.network.HomeService
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.dialog_hotline.*
+import kotlinx.android.synthetic.main.item_lookup.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +29,11 @@ class MainActivity : AppCompatActivity() {
         const val Extra="Extras"
         val hotlineFragment = HotlineFragment()
         val infoFragment = InfoFragment()
+        private val retrofit = Retrofit.Builder().baseUrl("https://api.kawalcorona.com")
+            .addConverterFactory(GsonConverterFactory.create()).build()
+        private val mockTotalDataList = mutableListOf(TotalData("Country",999999,999999,999999,999999))
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +51,32 @@ class MainActivity : AppCompatActivity() {
         hotlineArrIcon.setOnClickListener(){
             hotlineFragment.show(supportFragmentManager, "HotlineDialog")
         }
+        val totalCaseAdapter = TotalCaseAdapter(mockTotalDataList)
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val totalData = retrofit.create(HomeService::class.java).getTotalCase()
+                withContext(Dispatchers.IO){
+//                    Log.e('Activity',"${totalData}")
 
-
+                     totalCaseAdapter.updateData(totalData)
+                }
+            }catch (e: Exception){
+                withContext(Dispatchers.Main){
+                    Toast.makeText(this@MainActivity,e.message,Toast.LENGTH_SHORT).show()
+                    totalCaseAdapter.updateData(listOf())
+                }
+            }
+        }
     }
+
+    fun bind(data: TotalData){
+        tvCountry.text = data.country
+        totalCase.text = "${data.totalCase}"
+        totalPositive.text = "${data.totatlPositif}"
+        totalRecovered.text = "${data.totalRecovered}"
+        totalDeath.text = "${data.totalDead}"
+    }
+
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
