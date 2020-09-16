@@ -1,4 +1,4 @@
-package com.example.covid_19monitorapp.Data
+package com.example.covid_19monitorapp.data
 
 data class HotlineData (
     val imgIcon: String,

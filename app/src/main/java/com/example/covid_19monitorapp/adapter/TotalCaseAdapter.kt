@@ -1,7 +1,6 @@
-package com.example.covid_19monitorapp.Adapter
+package com.example.covid_19monitorapp.adapter
 
-import com.example.covid_19monitorapp.Data.TotalData
-import com.example.covid_19monitorapp.MainActivity
+import com.example.covid_19monitorapp.data.TotalData
 
 class TotalCaseAdapter(private val totalDataList: MutableList<TotalData>) {
 

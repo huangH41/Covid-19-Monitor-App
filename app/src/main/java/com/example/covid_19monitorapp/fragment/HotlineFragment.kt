@@ -1,19 +1,16 @@
-package com.example.covid_19monitorapp
+package com.example.covid_19monitorapp.fragment
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.covid_19monitorapp.Adapter.HotlineAdapter
-import com.example.covid_19monitorapp.Data.HotlineData
+import com.example.covid_19monitorapp.adapter.HotlineAdapter
+import com.example.covid_19monitorapp.data.HotlineData
+import com.example.covid_19monitorapp.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_hotline.*
-import kotlinx.android.synthetic.main.item_hotline.*
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException

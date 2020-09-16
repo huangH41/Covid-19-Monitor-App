@@ -1,4 +1,4 @@
-package com.example.covid_19monitorapp
+package com.example.covid_19monitorapp.activity
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,8 +7,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.covid_19monitorapp.Adapter.LookUpAdapter
-import com.example.covid_19monitorapp.Data.LookUpData
+import com.example.covid_19monitorapp.adapter.LookUpAdapter
+import com.example.covid_19monitorapp.data.LookUpData
+import com.example.covid_19monitorapp.R
 import kotlinx.android.synthetic.main.activity_lookup.*
 import okhttp3.*
 import org.json.JSONArray

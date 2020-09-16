@@ -1,4 +1,4 @@
-package com.example.covid_19monitorapp
+package com.example.covid_19monitorapp.activity
 
 import android.content.Context
 import android.content.Intent
@@ -9,13 +9,14 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.covid_19monitorapp.Adapter.TotalCaseAdapter
-import com.example.covid_19monitorapp.Data.TotalData
+import com.example.covid_19monitorapp.adapter.TotalCaseAdapter
+import com.example.covid_19monitorapp.data.TotalData
+import com.example.covid_19monitorapp.fragment.HotlineFragment
+import com.example.covid_19monitorapp.fragment.InfoFragment
+import com.example.covid_19monitorapp.R
 import com.example.covid_19monitorapp.network.HomeService
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.dialog_hotline.*
-import kotlinx.android.synthetic.main.item_lookup.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

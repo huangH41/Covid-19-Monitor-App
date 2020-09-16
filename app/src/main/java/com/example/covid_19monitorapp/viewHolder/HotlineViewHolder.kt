@@ -1,19 +1,12 @@
-package com.example.covid_19monitorapp.Adapter
+package com.example.covid_19monitorapp.viewHolder
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19monitorapp.Data.HotlineData
-import com.example.covid_19monitorapp.HotlineFragment
-import com.example.covid_19monitorapp.MainActivity
+import com.example.covid_19monitorapp.data.HotlineData
+import com.example.covid_19monitorapp.activity.MainActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.dialog_hotline.view.*
 import kotlinx.android.synthetic.main.item_hotline.view.*
 import kotlinx.android.synthetic.main.item_hotline.view.hotlineHeader
-import kotlin.coroutines.coroutineContext
 
 class HotlineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     fun bind(data: HotlineData){

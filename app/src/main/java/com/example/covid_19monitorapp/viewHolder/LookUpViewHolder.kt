@@ -1,8 +1,8 @@
-package com.example.covid_19monitorapp.Adapter
+package com.example.covid_19monitorapp.viewHolder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19monitorapp.Data.LookUpData
+import com.example.covid_19monitorapp.data.LookUpData
 import kotlinx.android.synthetic.main.item_lookup.view.*
 
 class LookUpViewHolder(itemView:View): RecyclerView.ViewHolder(itemView) {

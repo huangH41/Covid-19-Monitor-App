@@ -1,10 +1,11 @@
-package com.example.covid_19monitorapp
+package com.example.covid_19monitorapp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.covid_19monitorapp.R
 import kotlinx.android.synthetic.main.dialog_info.*
 
 class InfoFragment: DialogFragment(){

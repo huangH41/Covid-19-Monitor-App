@@ -1,6 +1,6 @@
 package com.example.covid_19monitorapp.network
 
-import com.example.covid_19monitorapp.Data.TotalData
+import com.example.covid_19monitorapp.data.TotalData
 import retrofit2.http.GET
 
 interface HomeService {

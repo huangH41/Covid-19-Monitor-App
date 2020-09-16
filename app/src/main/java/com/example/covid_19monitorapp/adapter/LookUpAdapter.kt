@@ -1,10 +1,11 @@
-package com.example.covid_19monitorapp.Adapter
+package com.example.covid_19monitorapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19monitorapp.Data.LookUpData
+import com.example.covid_19monitorapp.data.LookUpData
 import com.example.covid_19monitorapp.R
+import com.example.covid_19monitorapp.viewHolder.LookUpViewHolder
 
 class LookUpAdapter(private val lookUpList: MutableList<LookUpData>) : RecyclerView.Adapter<LookUpViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LookUpViewHolder {
