@@ -10,72 +10,54 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.covid_19monitorapp.adapter.TotalCaseAdapter
-import com.example.covid_19monitorapp.data.TotalData
+import com.example.covid_19monitorapp.data.CountryTotalCaseData
 import com.example.covid_19monitorapp.fragment.HotlineFragment
 import com.example.covid_19monitorapp.fragment.InfoFragment
 import com.example.covid_19monitorapp.R
 import com.example.covid_19monitorapp.network.HomeService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_hotline.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
-        const val Extra="Extras"
+    companion object {
+        const val Extra = "Extras"
         val hotlineFragment = HotlineFragment()
         val infoFragment = InfoFragment()
-        private val retrofit = Retrofit.Builder().baseUrl("https://api.kawalcorona.com")
-            .addConverterFactory(GsonConverterFactory.create()).build()
-        private val mockTotalDataList = mutableListOf(TotalData("Country",999999,999999,999999,999999))
     }
 
+    private val mockTotalDataList = mutableListOf(CountryTotalCaseData("Country", "99", "99", "99", "99"))
+    private val totalCaseAdapter = TotalCaseAdapter(mockTotalDataList)
+
+    private val homeService = HomeService.createHomeService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.e("Activity","Activity:onCreate")
-
         hotlineBottomSheet.visibility = View.GONE
 
-        lookUpArrIcon.setOnClickListener(){
+        reqTotalCountryCaseData(homeService)
+
+        lookUpArrIcon.setOnClickListener() {
             lookUpActivity()
         }
-        ibInfo.setOnClickListener(){
-            infoFragment.show(supportFragmentManager,"infoDialog")
+        ibInfo.setOnClickListener() {
+            infoFragment.show(supportFragmentManager, "infoDialog")
         }
-        hotlineArrIcon.setOnClickListener(){
+        hotlineArrIcon.setOnClickListener() {
             hotlineFragment.show(supportFragmentManager, "HotlineDialog")
-        }
-        val totalCaseAdapter = TotalCaseAdapter(mockTotalDataList)
-        GlobalScope.launch(Dispatchers.IO) {
-            try {
-                val totalData = retrofit.create(HomeService::class.java).getTotalCase()
-                withContext(Dispatchers.IO){
-//                    Log.e('Activity',"${totalData}")
-
-                     totalCaseAdapter.updateData(totalData)
-                }
-            }catch (e: Exception){
-                withContext(Dispatchers.Main){
-                    Toast.makeText(this@MainActivity,e.message,Toast.LENGTH_SHORT).show()
-                    totalCaseAdapter.updateData(listOf())
-                }
-            }
         }
     }
 
-    fun bind(data: TotalData){
-        tvCountry.text = data.country
-        totalCase.text = "${data.totalCase}"
-        totalPositive.text = "${data.totatlPositif}"
-        totalRecovered.text = "${data.totalRecovered}"
-        totalDeath.text = "${data.totalDead}"
+    private fun bindTotalCountryCase(caseDataCountry: CountryTotalCaseData) {
+        tvCountry.text = caseDataCountry.country
+        totalCase.text = "${caseDataCountry.totalCase}"
+        totalPositive.text = "${caseDataCountry.totatlPositif}"
+        totalRecovered.text = "${caseDataCountry.totalRecovered}"
+        totalDeath.text = "${caseDataCountry.totalDead}"
     }
 
 
@@ -83,51 +65,38 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState, outPersistentState)
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.e("Activity","Activity:onStart")
+    private fun reqTotalCountryCaseData(homeService: HomeService) {
+        homeService.getTotalCase().enqueue(object : Callback<List<CountryTotalCaseData>> {
+            override fun onResponse(
+                call: Call<List<CountryTotalCaseData>>,
+                response: Response<List<CountryTotalCaseData>>
+            ) {
+                bindTotalCountryCase(response?.body()!![0])
+            }
+
+            override fun onFailure(call: Call<List<CountryTotalCaseData>>, t: Throwable) {
+                this@MainActivity.runOnUiThread {
+                    Log.e("TotalCountryDataReq", t.message.toString())
+                    Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.e("Activity","Activity:onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e("Activity","Activity:onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e("Activity","Activity:onStop")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.e("Activity","Activity:onRestart")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("Activity","Activity:onDestroy")
-    }
-//    Explicit Intent
-    private fun lookUpActivity(){
-        val intent =Intent(this, LookupActivity::class.java).apply{
-            putExtra(Extra,"Lampung")
+    private fun lookUpActivity() {
+        val intent = Intent(this, LookupActivity::class.java).apply {
+            putExtra(Extra, "Lampung")
         }
         startActivity(intent)
     }
-//    Implicit Intent
-        fun phoneCall(context: Context, request: String){
-            Log.e("phone","$request")
-            val phoneNumber = request.replace("-","")
-            Log.e("phone","$phoneNumber")
-            val intent = Intent().apply{
-                action = Intent.ACTION_DIAL
-                data = Uri.parse("tel:$phoneNumber" )
-            }
-                context.startActivity(intent)
+
+    fun phoneCall(context: Context, request: String) {
+        val phoneNumber = request.replace("-", "")
+        val intent = Intent().apply {
+            action = Intent.ACTION_DIAL
+            data = Uri.parse("tel:$phoneNumber")
         }
+        context.startActivity(intent)
+    }
 }

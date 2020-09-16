@@ -114,35 +114,4 @@ class LookupActivity: AppCompatActivity() {
 
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.e("Activity","Activity:onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e("Activity","Activity:onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e("Activity","Activity:onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e("Activity","Activity:onStop")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.e("Activity","Activity:onRestart")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("Activity","Activity:onDestroy")
-    }
-
 }

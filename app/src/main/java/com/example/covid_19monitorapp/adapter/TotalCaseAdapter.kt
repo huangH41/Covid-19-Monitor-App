@@ -1,12 +1,12 @@
 package com.example.covid_19monitorapp.adapter
 
-import com.example.covid_19monitorapp.data.TotalData
+import com.example.covid_19monitorapp.data.CountryTotalCaseData
 
-class TotalCaseAdapter(private val totalDataList: MutableList<TotalData>) {
+class TotalCaseAdapter(private val countryTotalCaseDataList: MutableList<CountryTotalCaseData>) {
 
-    fun updateData(newList: List<TotalData>) {
-        totalDataList.clear()
-        totalDataList.addAll(newList)
+    fun updateData(newList: List<CountryTotalCaseData>) {
+        countryTotalCaseDataList.clear()
+        countryTotalCaseDataList.addAll(newList)
     }
 
 }

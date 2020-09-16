@@ -181,7 +181,7 @@
             app:layout_constraintTop_toTopOf="@+id/recoveredCaseContainer">
 
             <TextView
-                android:id="@+id/D"
+                android:id="@+id/totalDeath"
                 style="@style/Header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
