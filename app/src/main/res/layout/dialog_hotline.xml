@@ -31,8 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:textColor="@color/Indigo"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            style="@style/Header4"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineClose"
             android:text="Hotline" />
@@ -43,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:textColor="@color/Light_Grey"
-            android:textStyle="bold"
+            style="@style/body1"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineHeader"
             android:text="Layanan darurat via telephone yang disediakan olehKemnkes dan juga pemprov DKI" />

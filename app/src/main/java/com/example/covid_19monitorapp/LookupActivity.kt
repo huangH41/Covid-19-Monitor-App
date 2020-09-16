@@ -23,7 +23,7 @@ class LookupActivity: AppCompatActivity() {
     }
 
     private val listOfLookUpData = mutableListOf<LookUpData>(
-        LookUpData("Dummy Data", 100, 100, 100)
+        LookUpData("Loading...", 100, 100, 100)
     )
     private val lookUpAdapter = LookUpAdapter(listOfLookUpData)
 

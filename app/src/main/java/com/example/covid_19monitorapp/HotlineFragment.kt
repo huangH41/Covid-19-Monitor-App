@@ -95,16 +95,4 @@ class HotlineFragment: BottomSheetDialogFragment(){
         }
 
     }
-
-     fun phoneCall(request: String){
-         Log.e("phone","$request")
-        val phoneNumber = request.replace("-","")
-         Log.e("phone","$phoneNumber")
-        val intent = Intent().apply{
-            action = Intent.ACTION_DIAL
-            data = Uri.parse("tel:$phoneNumber" )
-        }
-        startActivity(intent)
-
-    }
 }

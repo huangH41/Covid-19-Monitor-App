@@ -1,5 +1,6 @@
 package com.example.covid_19monitorapp
 
+import android.content.Context
 import android.content.Intent
 import android.icu.text.IDNA
 import android.net.Uri
@@ -80,5 +81,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 //    Implicit Intent
-
+        fun phoneCall(context: Context, request: String){
+            Log.e("phone","$request")
+            val phoneNumber = request.replace("-","")
+            Log.e("phone","$phoneNumber")
+            val intent = Intent().apply{
+                action = Intent.ACTION_DIAL
+                data = Uri.parse("tel:$phoneNumber" )
+            }
+                context.startActivity(intent)
+        }
 }
