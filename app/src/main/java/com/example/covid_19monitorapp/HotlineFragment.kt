@@ -22,7 +22,6 @@ import java.lang.Exception
 class HotlineFragment: BottomSheetDialogFragment(){
 
     companion object{
-        const val Extra="Extras"
         val okHttpClient = OkHttpClient()
 
         private val mockHotlineList = mutableListOf(

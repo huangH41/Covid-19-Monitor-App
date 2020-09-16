@@ -23,11 +23,11 @@ class HotlineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         itemView.hotlineHeader.text = data.name
         itemView.hotlineNumber.text = data.phone
 
-        val context =itemView.context
+        val context = itemView.context
         val mainActivity = MainActivity()
 
-        itemView.phoneNumber.setOnClickListener(){
-            mainActivity.phoneCall(context, "${data.phone}")
+        itemView.phoneNumber.setOnClickListener {
+            mainActivity.phoneCall(context, data.phone)
         }
 
     }
