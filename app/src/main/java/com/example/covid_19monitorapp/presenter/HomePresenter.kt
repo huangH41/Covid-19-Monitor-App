@@ -17,7 +17,7 @@ class HomePresenter(private val view: HomeContract.View): HomeContract.Presenter
                 call: Call<List<CountryTotalCaseData>>,
                 response: Response<List<CountryTotalCaseData>>
             ) {
-                view.bindData(response?.body()!![0])
+                view.bindData(response.body()!![0])
             }
 
             override fun onFailure(call: Call<List<CountryTotalCaseData>>, t: Throwable) {
