@@ -26,7 +26,7 @@ class HotlineFragment : BottomSheetDialogFragment() {
             .build()
 
     private val mockHotlineList = mutableListOf(
-        HotlineData(name = "Loading..", imgIcon = "", phone = "")
+        HotlineData(name = "Loading..", imgIcon = "", phone = "Loading..")
     )
 
     private val hotlineAdapter = HotlineAdapter(mockHotlineList)
