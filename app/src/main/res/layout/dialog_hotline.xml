@@ -45,6 +45,7 @@
             style="@style/body1"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineHeader"
+            app:layout_constraintBottom_toTopOf="@id/rvHotline"
             android:text="Layanan darurat via telephone yang disediakan olehKemnkes dan juga pemprov DKI" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -53,7 +54,8 @@
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@+id/subHeaderHotline"
             tools:itemCount="2"
-            tools:listitem="@layout/item_hotline" />
+            tools:listitem="@layout/item_hotline"
+            android:layout_marginTop="24dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

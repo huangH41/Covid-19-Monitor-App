@@ -41,12 +41,22 @@ class MainActivity : AppCompatActivity() {
 
         reqTotalCountryCaseData(homeService)
 
+        lookUpButton.setOnClickListener() {
+            lookUpActivity()
+        }
+
         lookUpArrIcon.setOnClickListener() {
             lookUpActivity()
         }
+
         ibInfo.setOnClickListener() {
             infoFragment.show(supportFragmentManager, "infoDialog")
         }
+
+        hotlineButton.setOnClickListener() {
+            hotlineFragment.show(supportFragmentManager, "HotlineDialog")
+        }
+
         hotlineArrIcon.setOnClickListener() {
             hotlineFragment.show(supportFragmentManager, "HotlineDialog")
         }
