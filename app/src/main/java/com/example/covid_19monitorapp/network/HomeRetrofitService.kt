@@ -6,18 +6,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface HomeService {
+interface HomeRetrofitService {
     @GET("indonesia/")
     fun getTotalCase(): Call<List<CountryTotalCaseData>>
 
     companion object {
         val BASE_URL = "https://api.kawalcorona.com"
 
-        fun createHomeService() : HomeService {
+        fun createHomeService() : HomeRetrofitService {
             val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build()
 
-            return retrofit.create(HomeService::class.java)
+            return retrofit.create(HomeRetrofitService::class.java)
         }
     }
 }
