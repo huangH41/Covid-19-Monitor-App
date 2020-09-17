@@ -9,8 +9,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomePresenter(private val view: HomeContract.View): HomeContract.Presenter {
-    override fun reqTotalCountryCaseData(homeRetrofitService: HomeRetrofitService) {
+    val homeRetrofitService = HomeRetrofitService.createHomeService()
 
+    override fun reqTotalCountryCaseData() {
         homeRetrofitService.getTotalCase().enqueue(object : Callback<List<CountryTotalCaseData>> {
             override fun onResponse(
                 call: Call<List<CountryTotalCaseData>>,

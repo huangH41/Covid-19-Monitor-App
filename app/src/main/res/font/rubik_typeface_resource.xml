@@ -9,10 +9,4 @@
         android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/rubik_regular"/>
-
-<!--    <font-->
-<!--        android:fontStyle="normal"-->
-<!--        android:fontWeight="800"-->
-<!--        android:font="@font/rubik_black"/>-->
-
 </font-family>

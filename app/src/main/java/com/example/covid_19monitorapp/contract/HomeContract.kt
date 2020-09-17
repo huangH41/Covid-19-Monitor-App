@@ -9,6 +9,6 @@ interface HomeContract {
     }
 
     interface Presenter {
-        fun reqTotalCountryCaseData(homeRetrofitService: HomeRetrofitService)
+        fun reqTotalCountryCaseData()
     }
 }

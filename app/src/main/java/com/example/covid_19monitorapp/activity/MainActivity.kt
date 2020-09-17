@@ -19,19 +19,15 @@ import kotlinx.android.synthetic.main.dialog_hotline.*
 
 class MainActivity : AppCompatActivity(), HomeContract.View {
 
-    companion object {
-        val hotlineFragment = HotlineFragment()
-        val infoFragment = InfoFragment()
-    }
-
     private val presenter = HomePresenter(this)
-    private val retrofitService = HomeRetrofitService.createHomeService()
+    private val hotlineFragment = HotlineFragment()
+    private val infoFragment = InfoFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         hotlineBottomSheet.visibility = View.GONE
-        presenter.reqTotalCountryCaseData(retrofitService)
+        presenter.reqTotalCountryCaseData()
         setViewEventListener()
     }
 
@@ -50,6 +46,15 @@ class MainActivity : AppCompatActivity(), HomeContract.View {
     private fun lookUpActivity() {
         val intent = Intent(this, LookupActivity::class.java)
         startActivity(intent)
+    }
+
+    fun phoneCall(context: Context, request: String) {
+        val phoneNumber = request.replace("-", "")
+        val intent = Intent().apply {
+            action = Intent.ACTION_DIAL
+            data = Uri.parse("tel:$phoneNumber")
+        }
+        context.startActivity(intent)
     }
 
     private fun setViewEventListener() {
@@ -72,14 +77,5 @@ class MainActivity : AppCompatActivity(), HomeContract.View {
         hotlineArrIcon.setOnClickListener() {
             hotlineFragment.show(supportFragmentManager, "HotlineDialog")
         }
-    }
-
-    fun phoneCall(context: Context, request: String) {
-        val phoneNumber = request.replace("-", "")
-        val intent = Intent().apply {
-            action = Intent.ACTION_DIAL
-            data = Uri.parse("tel:$phoneNumber")
-        }
-        context.startActivity(intent)
     }
 }
