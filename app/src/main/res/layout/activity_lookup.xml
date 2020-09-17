@@ -82,6 +82,7 @@
             android:hint="Province Name"
             android:inputType="text"
             android:textColor="@color/Soft_Indigo"
+            android:textColorHint="@color/Soft_Indigo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/ibSearchButton"
             app:layout_constraintRight_toLeftOf="@+id/ibDelInputButton"
