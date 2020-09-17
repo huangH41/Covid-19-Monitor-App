@@ -41,12 +41,12 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:textColor="@color/Light_Grey"
+            android:textColor="@color/Soft_Indigo"
             style="@style/body1"
             app:layout_constraintStart_toEndOf="@+id/hotlineClose"
             app:layout_constraintTop_toBottomOf="@+id/hotlineHeader"
             app:layout_constraintBottom_toTopOf="@id/rvHotline"
-            android:text="Layanan darurat via telephone yang disediakan olehKemnkes dan juga pemprov DKI" />
+            android:text="Layanan darurat via telepon yang disediakan oleh Kemenkes dan juga pemprov DKI" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHotline"
