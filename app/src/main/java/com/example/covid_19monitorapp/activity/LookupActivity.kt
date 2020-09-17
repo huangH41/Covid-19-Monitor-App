@@ -13,42 +13,48 @@ import com.example.covid_19monitorapp.R
 import kotlinx.android.synthetic.main.activity_lookup.*
 import okhttp3.*
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 import java.lang.Exception
 
-class LookupActivity: AppCompatActivity() {
-
-    companion object{
-        const val Extra="Extras"
-        val okHttpClient = OkHttpClient()
-    }
+class LookupActivity : AppCompatActivity() {
 
     private val listOfLookUpData = mutableListOf<LookUpData>(
         LookUpData("Loading...", 100, 100, 100)
     )
     private val lookUpAdapter = LookUpAdapter(listOfLookUpData)
+    private val okHttpClient = OkHttpClient()
+    private var request =
+        Request.Builder().url("https://api.kawalcorona.com/indonesia/provinsi/#").build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lookup)
         title = "Lookup Activity"
-        val request = Request.Builder().url("https://api.kawalcorona.com/indonesia/provinsi/#").build()
 
         rvLookUp.layoutManager = LinearLayoutManager(this)
         rvLookUp.adapter = lookUpAdapter
 
         reqLookUpData(request)
 
-        backButton.setOnClickListener{
+        setViewEventListener()
+    }
+
+    private fun setViewEventListener() {
+        backButton.setOnClickListener {
             onBackPressed()
         }
+
         ibDelInputButton.setOnClickListener {
-            if(!etSearchInput.text.isEmpty()) { etSearchInput.text.clear() }
+            if (!etSearchInput.text.isEmpty()) {
+                etSearchInput.text.clear()
+            }
         }
+
         etSearchInput.addTextChangedListener(searchTextChangeListener(request))
     }
 
-    private fun searchTextChangeListener(request: Request) : TextWatcher {
+    private fun searchTextChangeListener(request: Request): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 Log.i("Search", "Before Text Changed")
@@ -60,8 +66,7 @@ class LookupActivity: AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
                 this@LookupActivity.runOnUiThread {
-                    if(!p0.toString().isNullOrBlank()) {
-//                        reqLookUpData(request)
+                    if (!p0.toString().isNullOrBlank()) {
                         lookUpAdapter.filterAndUpdateData(p0.toString())
                     } else {
                         reqLookUpData(request)
@@ -71,15 +76,23 @@ class LookupActivity: AppCompatActivity() {
         }
     }
 
-
     private fun reqLookUpData(request: Request) {
         okHttpClient
             .newCall(request)
             .enqueue(getCallback(lookUpAdapter))
     }
 
+    private fun bindData(jsonObject: JSONObject): LookUpData {
+        return LookUpData(
+            jsonObject.getString("Provinsi"),
+            jsonObject.getInt("Kasus_Posi"),
+            jsonObject.getInt("Kasus_Semb"),
+            jsonObject.getInt("Kasus_Meni")
+        )
+    }
+
     private fun getCallback(lookUpAdapter: LookUpAdapter): Callback {
-        return object : Callback{
+        return object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 this@LookupActivity.runOnUiThread {
                     Toast.makeText(this@LookupActivity, e.message, Toast.LENGTH_SHORT).show()
@@ -92,26 +105,22 @@ class LookupActivity: AppCompatActivity() {
                     val jsonArray = JSONArray(jsonString)
                     val lookUpListFromNetwork = mutableListOf<LookUpData>()
 
-                    for (i in 0 until jsonArray.length()){
+                    for (i in 0 until jsonArray.length()) {
                         lookUpListFromNetwork.add(
-                            LookUpData(
-                                jsonArray.getJSONObject(i).getJSONObject("attributes").getString("Provinsi"),
-                                jsonArray.getJSONObject(i).getJSONObject("attributes").getInt("Kasus_Posi"),
-                                jsonArray.getJSONObject(i).getJSONObject("attributes").getInt("Kasus_Semb"),
-                                jsonArray.getJSONObject(i).getJSONObject("attributes").getInt("Kasus_Meni")
+                            bindData(
+                                jsonArray.getJSONObject(i).getJSONObject("attributes")
                             )
                         )
                     }
                     this@LookupActivity.runOnUiThread {
                         lookUpAdapter.updateData(lookUpListFromNetwork)
                     }
-                }catch (e: Exception){
+                } catch (e: Exception) {
                     this@LookupActivity.runOnUiThread {
                         Toast.makeText(this@LookupActivity, e.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-
         }
     }
 }
